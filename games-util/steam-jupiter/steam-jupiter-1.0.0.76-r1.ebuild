@@ -7,6 +7,9 @@ DESCRIPTION="Valve's digital software delivery system - Jupiter bootstrapped pac
 HOMEPAGE="https://steampowered.com/"
 LICENSE="custom"
 
+inherit xdg-utils
+
+
 SLOT="0"
 S=/var/tmp/portage/games-util/steam-jupiter-1.0.0.76-r1/work/
 
@@ -55,6 +58,7 @@ DEPEND="
 "
 
 src_install() {
+	cd ${WORKDIR}/jupiter_steam-jupiter-stable-PKGBUILD-master
 	tar -xpzvf steam_1.0.0.76.tar.gz
 	cd steam-launcher
 
@@ -86,4 +90,12 @@ src_install() {
 	# Replace bootstrapper with fat one
 	rm "$D"/usr/lib/steam/bootstraplinux_ubuntu12_32.tar.xz
 	install -Dm 644 "${WORKDIR}/steam_jupiter_stable_bootstrapped_20230316.1.tar.xz" "$D"/usr/lib/steam/bootstraplinux_ubuntu12_32.tar.xz
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }
