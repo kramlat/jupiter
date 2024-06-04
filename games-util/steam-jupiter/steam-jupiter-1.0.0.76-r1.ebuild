@@ -89,7 +89,7 @@ src_install() {
 
 	# Replace bootstrapper with fat one
 	rm "$D"/usr/lib/steam/bootstraplinux_ubuntu12_32.tar.xz
-	install -Dm 644 "${WORKDIR}/steam_jupiter_stable_bootstrapped_20230316.1.tar.xz" "$D"/usr/lib/steam/bootstraplinux_ubuntu12_32.tar.xz
+	install -Dm 644 "${WORKDIR}/jupiter_steam-jupiter-stable-PKGBUILD-master/steam_jupiter_stable_bootstrapped_20230316.1.tar.xz" "$D"/usr/lib/steam/bootstraplinux_ubuntu12_32.tar.xz
 }
 
 pkg_postinst() {
