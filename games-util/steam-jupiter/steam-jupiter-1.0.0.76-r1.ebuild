@@ -67,8 +67,8 @@ src_install() {
         sed -r 's|(, TAG\+="uaccess")|, MODE="0660"\1|g' -i subprojects/steam-devices/60-steam-vr.rules
 
 	make DESTDIR="${D}" install
-	install -Dm 755 "${WORKDIR}/steam-runtime.sh" "${D}/usr/bin/steam-runtime"
-	install -Dm 755 "${WORKDIR}/steam-jupiter.sh" "${D}/usr/bin/steam-jupiter"
+	install -Dm 755 "${WORKDIR}/jupiter_steam-jupiter-stable-PKGBUILD-master/steam-runtime.sh" "${D}/usr/bin/steam-runtime"
+	install -Dm 755 "${WORKDIR}/jupiter_steam-jupiter-stable-PKGBUILD-master/steam-jupiter.sh" "${D}/usr/bin/steam-jupiter"
 	install -d "${D}/usr/lib/steam"
 	mv "${D}/usr/bin/steam" "${D}/usr/lib/steam/steam"
 	ln -sf /usr/bin/steam-runtime "${D}/usr/bin/steam"
@@ -80,7 +80,7 @@ src_install() {
 
 	# Jupiter
 	# Install permissive input rules
-	install -Dm 644 "${WORKDIR}/70-steam-jupiter-input.rules" "${D}/usr/lib/udev/rules.d/70-steam-jupiter-input.rules"
+	install -Dm 644 "${WORKDIR}/jupiter_steam-jupiter-stable-PKGBUILD-master/70-steam-jupiter-input.rules" "${D}/usr/lib/udev/rules.d/70-steam-jupiter-input.rules"
 
 	# Jupiter
 	# Replace the runtime with our own wrapper
